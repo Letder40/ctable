@@ -26,6 +26,6 @@ int main(int argc, char** argv) {
 ![ctable_demo](example/demo.png)
 ### Take in count
 
-Use the macro TABLE to define the table structure.
-Use the macro ROW to define each row.
-All memmory allocation will be freed when print_table is called.
++ Use the macro TABLE to define the table structure.
++ Use the macro ROW to define each row.
++ All memmory allocation will be freed when print_table is called.
