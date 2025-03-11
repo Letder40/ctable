@@ -2,7 +2,7 @@
 
 ## Introduction
 Ctable is a library that allows to generate printable tables easily
-This was originally a module of (netcalc)[https://github.com/Letder40/netcalc], but I ended creating a library to use this in others c projects.
+This was originally a module of [netcalc](https://github.com/Letder40/netcalc), but I ended creating a library to use this in others c projects.
 
 ## How it works?
 link the static library lib/libctable.a to your project.
@@ -22,6 +22,8 @@ int main(int argc, char** argv) {
     print_table(builder);
 }
 ```
+
+![ctable_demo](example/demo.png)
 ### Take in count
 
 Use the macro TABLE to define the table structure.
