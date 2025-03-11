@@ -27,4 +27,3 @@ int main(int argc, char** argv) {
 Use the macro TABLE to define the table structure.
 Use the macro ROW to define each row.
 All memmory allocation will be freed when print_table is called.
-# ctable
