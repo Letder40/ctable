@@ -37,6 +37,6 @@ void line_free(Line* line);
 
 Line build_outer_line(uint32_t* cols_size, Position position);
 Line build_inner_line(uint32_t* cols_size);
-Line build_data_line(row_t data, uint32_t* cols_size);
+Line build_text_line(row_t data, uint32_t* cols_size);
 
 #endif

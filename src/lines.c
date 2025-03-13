@@ -83,7 +83,7 @@ Line build_inner_line(uint32_t* cols_size) {
     return line;
 }
 
-Line build_data_line(row_t data, uint32_t* cols_size) {
+Line build_text_line(row_t data, uint32_t* cols_size) {
     Line line = new_line();
     line_push(&line, VERTICAL_LINE);
 

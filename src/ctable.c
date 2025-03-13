@@ -1,9 +1,13 @@
 #include <locale.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
-#include <stdint.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 #include "../include/ctable.h"
 
@@ -71,24 +75,30 @@ void table_builder_free(TableBuilder* table_builder) {
     free(table_builder->cols_size);
 }
 
-#define print_line(line) wprintf(L"%ls\n", line);
-#define print_data_line(line) wprintf(L"%ls\n", line); free(line);
-
 void print_table(TableBuilder builder) {
-    setlocale(LC_ALL, "");
-    #ifdef _WIN32
+#ifdef _WIN32
+    uint32_t locale = GetConsoleOutputCP();
     SetConsoleOutputCP(CP_UTF8);
-    #endif
+#else 
+    char* locale = setlocale(LC_ALL, "");
+#endif
+
+    printf("%ls\n", builder.top.data);
 
     row_t* row_ptr = builder.data;
-
-    print_line(builder.top.data);
-
     while (*row_ptr != NULL) {
-        print_data_line(build_data_line(*row_ptr, builder.cols_size).data);
-        if (*++row_ptr != NULL) print_line(builder.middle.data);
+        wchar_t* text_line = build_text_line(*row_ptr, builder.cols_size).data;
+        printf("%ls\n", text_line);
+        free(text_line);
+        if (*++row_ptr != NULL) printf("%ls\n", builder.middle.data);
     }
 
-    print_line(builder.bottom.data);
+    printf("%ls\n", builder.bottom.data);
+
+#ifdef _WIN32
+    SetConsoleOutputCP(locale);
+#else
+    setlocale(LC_ALL, locale);
+#endif
     table_builder_free(&builder);
 }
