@@ -8,7 +8,7 @@ Line new_line() {
     Line line = {
         .capacity = 0,
         .size = 0,
-        .data = NULL,
+        .unicode_text = NULL,
     };
     return line;
 }
@@ -16,20 +16,23 @@ Line new_line() {
 void line_push(Line* line, wchar_t new_char) {
     if (line->size == line->capacity) {
         line->capacity = line->capacity ? line->capacity * 2 : 4;
+
         wchar_t* new_data =
-            realloc(line->data, line->capacity * sizeof(wchar_t));
+            realloc(line->unicode_text, line->capacity * sizeof(wchar_t));
+
         if (!new_data) {
-            free(line->data);
+            free(line->unicode_text);
             exit(1);
         }
-        line->data = new_data;
+
+        line->unicode_text = new_data;
     }
 
-    line->data[line->size++] = new_char;
+    line->unicode_text[line->size++] = new_char;
 }
 
 void line_free(Line* line) {
-    free(line->data);
+    free(line->unicode_text);
     line->capacity = 0;
     line->size = 0;
 }
@@ -83,7 +86,7 @@ Line build_inner_line(uint32_t* cols_size) {
     return line;
 }
 
-Line build_text_line(row_t data, uint32_t* cols_size) {
+Line build_data_line(row_t data, uint32_t* cols_size) {
     Line line = new_line();
     line_push(&line, VERTICAL_LINE);
 

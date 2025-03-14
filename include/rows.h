@@ -3,7 +3,12 @@
 
 #define PADDING "  "
 
-char** create_row(const char* row[]);
-#define ROW(...) create_row((const char*[]){ __VA_ARGS__, NULL })
+typedef char** row_t;
+
+row_t create_row(const row_t row);
+
+void free_row(row_t row);
+
+#define ROW(...) (row_t)(char *[]){ __VA_ARGS__, NULL }
 
 #endif
