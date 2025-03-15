@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     // 
     // It is possible to push more rows before calling table_build() 
     // So it is possible to create a table that will growth dynamically
-    // until print_build is called.
+    // until table_build is called.
     // 
 
     Table table2 = TABLE(ROW("COLUMN ID", "DATA"));
