@@ -5,8 +5,10 @@ project(ctable)
 include_directories(include)
 
 #set(CMAKE_BUILD_TYPE Debug)
-
-add_executable(example example/example.c)
+#add_executable(example example/example.c)
+#set_target_properties(example PROPERTIES
+#    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../example
+#)
 
 add_library(ctable_static STATIC
     src/ctable.c
@@ -28,8 +30,5 @@ set_target_properties(ctable PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../lib
 )
 
-set_target_properties(example PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../example
-)
 
-target_link_libraries(example ctable)
+#target_link_libraries(example ctable)

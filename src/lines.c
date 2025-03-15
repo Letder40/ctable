@@ -3,6 +3,21 @@
 #include <stdlib.h>
 
 #include "../include/lines.h"
+#include "../include/rows.h"
+
+typedef enum {
+    TOP_LEFT_CORNER = L'┌',
+    TOP_RIGHT_CORNER = L'┐',
+    BOTTOM_LEFT_CORNER = L'└',
+    BOTTOM_RIGHT_CORNER = L'┘',
+    TOP_INTERSECTION = L'┬',
+    LEFT_INTERSECTION = L'├',
+    MIDDLE_INTERSECTION = L'┼',
+    RIGHT_INTERSECTION = L'┤',
+    BOTTOM_INTERSECTION = L'┴',
+    VERTICAL_LINE = L'│',
+    HORIZONTAL_LINE = L'─'
+} TableChars;
 
 Line new_line() {
     Line line = {

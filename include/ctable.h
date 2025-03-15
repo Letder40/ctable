@@ -3,11 +3,10 @@
 
 #include <locale.h>
 #include <stdint.h>
+#include <stddef.h>
 
 #include "lines.h"
 #include "rows.h"
-
-typedef char** row_t;
 
 typedef struct {
     size_t size;

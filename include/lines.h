@@ -6,34 +6,18 @@
 
 #include "../include/rows.h"
 
-typedef enum {
-    TOP_LEFT_CORNER = L'┌',
-    TOP_RIGHT_CORNER = L'┐',
-    BOTTOM_LEFT_CORNER = L'└',
-    BOTTOM_RIGHT_CORNER = L'┘',
-    TOP_INTERSECTION = L'┬',
-    LEFT_INTERSECTION = L'├',
-    MIDDLE_INTERSECTION = L'┼',
-    RIGHT_INTERSECTION = L'┤',
-    BOTTOM_INTERSECTION = L'┴',
-    VERTICAL_LINE = L'│',
-    HORIZONTAL_LINE = L'─'
-} TableChars;
-
-typedef enum {
-    TOP,
-    BOTTOM,
-} Position;
-
 typedef struct {
     wchar_t* unicode_text;
     size_t capacity;
     size_t size;
 } Line;
 
-Line new_line();
-void line_push(Line* line, wchar_t new_char);
 void line_free(Line* line);
+
+typedef enum {
+    TOP,
+    BOTTOM,
+} Position;
 
 Line build_outer_line(uint32_t* cols_size, Position position);
 Line build_inner_line(uint32_t* cols_size);
